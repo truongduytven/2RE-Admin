@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useToast } from '../ui/use-toast'
 import background from '@/assets/background1.jpg'
-import Icon from '@/assets/LogoMini.png'
+import Icon from '@/assets/Logo.png'
 import { useAuth } from '@/auth/AuthContext'
 import { Loader } from 'lucide-react'
 function SignInForm() {
@@ -61,7 +61,7 @@ function SignInForm() {
               <div className='flex flex-col space-y-2 text-center'>
                 <h1 className='text-2xl font-semibold tracking-tight'>Đăng nhập</h1>
                 <p className='text-sm text-muted-foreground'>
-                  để tiếp tục với <img className='inline w-5 h-5 mb-1' alt='icon' src={Icon} /> The Bus Journey
+                  để tiếp tục với <img className='inline w-5 h-5 mb-1' alt='icon' src={Icon} /> 2RE Secondhand
                 </p>
               </div>
               <>
