@@ -43,3 +43,11 @@ export interface ProductDetail {
   createdAt: string
   updatedAt: string
 }
+
+export interface Order {
+  id: string
+  totalQuantity: number
+  totalPrice: number
+  nameUser: string 
+  status: string
+}

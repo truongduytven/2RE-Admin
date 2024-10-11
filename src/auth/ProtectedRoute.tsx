@@ -8,10 +8,11 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const {user} = useAuth()
+  console.log("proteted",user)
   const token = localStorage.getItem('token')
   const location = useLocation()
   const navigate = useNavigate()
-  if (user?.isShopOwner) {
+  if (user && user?.isShopOwner) {
     return <Navigate to={location.state?.from || `/home/${user?.isShopOwner?"manager":"admin"}`} replace />
   } 
   return <>{children}</>

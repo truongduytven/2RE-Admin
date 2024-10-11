@@ -1,4 +1,3 @@
-
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import REAPI from '@/lib/2REAPI'
@@ -76,6 +75,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useEffect(() => {
     const fetchUser = async () => {
+      console.log('refresh')
       if (token) {
         try {
           const response = await REAPI.get('/api/Auth/CheckToken', {
@@ -87,6 +87,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             ...response.data.result.user,
             RoleName: response.data.result.user.isShopOwner ? 'Manager' : 'Admin'
           }
+          console.log("sau khi refresh", userData)
           setUser(userData)
         } catch (error) {
           localStorage.removeItem('token')
@@ -96,7 +97,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
     fetchUser()
   }, [token])
-
+  console.log("toekn", token)
+  
+  console.log('user auth provider', user)
   const login = async (email: string, password: string) => {
     try {
       setLoading(true)
@@ -119,20 +122,20 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           setUser(userData)
           if (userData.isShopOwner) {
             toast.success('Đăng nhập thành công')
-            navigate(`/home/${response.data.result.user.isShopOwner ? 'manager' : 'admin'}`);
+            navigate(`/home/${response.data.result.user.isShopOwner ? 'manager' : 'admin'}`)
           } else {
             toast.error('Tài khoản không được phép đăng nhập vào hệ thống')
             localStorage.removeItem('token')
           }
         } catch (error) {
-          toast.error("Lỗi đăng nhập. Vui lòng thử lại sau!")
+          toast.error('Lỗi đăng nhập. Vui lòng thử lại sau!')
           console.error('Fetching user information failed:', error)
         } finally {
           setLoading(false)
         }
       }
 
-      fetchUser()
+      await fetchUser()
     } catch (error) {
       setLoading(false)
       toast.error('Email hoặc mật khẩu không đúng')
