@@ -8,6 +8,7 @@ import { Input } from '../ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { convertPercentageToNumber } from '@/lib/utils'
 import { X } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 interface UpdateProductFormProps {
   product: ProductDetail | undefined
@@ -75,6 +76,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
   const [sizes, setSizes] = useState<Size[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -159,7 +161,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
     })
 
     formData.newImgUrl.forEach((file, index) => {
-      formEndData.append(`listImgUrl[${index}]`, file)
+      formEndData.append('listImgUrl', file)
     })
     console.log('FormData prepared for submission:')
     for (let pair of formEndData.entries()) {
@@ -169,7 +171,10 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
       const response = await REAPI.put(`/product/${product?.productId}`, formEndData)
       if (response.status === 200) {
         toast.success('Cập nhật sản phẩm thành công')
-        setEdit(false)
+        setTimeout(() => {
+          setEdit(false)
+          navigate('/products')
+        })
       }
     } catch (error) {
       console.error('Error updating product:', error)
