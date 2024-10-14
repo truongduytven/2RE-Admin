@@ -1,35 +1,42 @@
 import { useAuth } from '@/auth/AuthContext'
 import PageTitle from '@/components/global/PageTitle'
 import Loading from '@/components/Loading/Loading'
-import { DataTable } from '@/components/local/order/data-table'
-import { columns } from '@/components/local/order/column'
+import { DataTable } from '@/components/local/products/data-table'
+import { columns } from '@/components/local/products/column'
 import REAPI from '@/lib/2REAPI'
-import { Order } from '@/types'
+import { Product } from '@/types'
 import { useEffect, useState } from 'react'
 import { DataRefreshContext } from '@/contexts/DataRefeshContext'
 
-const defaultValue: Order[] = [
+const defaultValue: Product[] = [
   {
-    id: '',
-    totalQuantity: 0,
-    totalPrice: 0,
-    nameUser: '',
-    status: ''
+    productId: '',
+    name: '',
+    price: 0,
+    imgUrl: '',
+    size: '',
+    category: '',
+    condition: '',
+    genderCategory: '',
+    brand: '',
+    status: '',
+    shopOwner: '',
+    sale: 0,
   }
 ]
 
-export default function TableOrder() {
-  const [Data, setData] = useState<Order[]>(defaultValue)
+export default function TableProducts() {
+  const [Data, setData] = useState<Product[]>(defaultValue)
   const { user } = useAuth()
   const [isLoading, setIsLoading] = useState(false)
-  const fetchOrders = async () => {
+  const fetchProducts = async () => {
     try {
       setIsLoading(true)
-      const response = await REAPI.get(`/product/order-from-shop/${user?.userId}`)
+      const response = await REAPI.get(`/product/product-from-shop/${user?.userId}`)
       const data = await response.data
       setData(data)
     } catch (error) {
-      console.error('Error fetching orders:', error)
+      console.error('Error fetching products:', error)
     } finally {
       setIsLoading(false)
     }
@@ -37,7 +44,7 @@ export default function TableOrder() {
 
   useEffect(() => {
     if (user) {
-      fetchOrders()
+      fetchProducts()
     }
   }, [user])
 
@@ -46,9 +53,9 @@ export default function TableOrder() {
   }
 
   return (
-    <DataRefreshContext.Provider value={fetchOrders}>
+    <DataRefreshContext.Provider value={fetchProducts}>
       <div className='flex flex-col gap-5 w-full'>
-        <PageTitle title='Đơn hàng' />
+        <PageTitle title='Danh sách sản phẩm' />
         <DataTable columns={columns} data={Data} />
       </div>
     </DataRefreshContext.Provider>

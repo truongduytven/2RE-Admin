@@ -87,7 +87,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             ...response.data.result.user,
             RoleName: response.data.result.user.isShopOwner ? 'Manager' : 'Admin'
           }
-          console.log("sau khi refresh", userData)
           setUser(userData)
         } catch (error) {
           localStorage.removeItem('token')
@@ -97,9 +96,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
     fetchUser()
   }, [token])
-  console.log("toekn", token)
-  
-  console.log('user auth provider', user)
+
   const login = async (email: string, password: string) => {
     try {
       setLoading(true)

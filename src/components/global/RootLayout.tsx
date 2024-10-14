@@ -100,7 +100,7 @@ import {
               <Loader className='w-4 h-4 animate-spin' />
             </div>
           )}
-          <div className='pt-24 w-full max-h-screen overflow-y-auto no-scrollbar'>
+          <div className='p-8 pt-24 w-full max-h-screen overflow-y-auto no-scrollbar'>
             <Outlet />
           </div>
         </div>

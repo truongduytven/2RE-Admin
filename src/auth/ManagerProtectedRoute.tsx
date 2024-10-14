@@ -8,7 +8,6 @@ type ManagerProtectedRouteProps  = RouteProps & {
 
 const ManagerProtectedRoute: React.FC<ManagerProtectedRouteProps> = ({ children }) => {
   const { user } = useAuth()
-console.log("man",user)
   if (!user) {
     return <Navigate to="/" />
   }

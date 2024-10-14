@@ -8,7 +8,7 @@ import { AuthProvider } from './auth/AuthContext.tsx'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <AuthProvider>
-      <Toaster richColors />
+      <Toaster richColors position='top-right'/>
       <App />
     </AuthProvider>
   </BrowserRouter>

@@ -13,7 +13,6 @@ import {
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import REAPI from '@/lib/2REAPI'
 import { formatCurrency } from '@/lib/utils'
-import { Order } from '@/types'
 import { Row } from '@tanstack/react-table'
 import { Eye } from 'lucide-react'
 import { useState } from 'react'
@@ -21,19 +20,20 @@ import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
 import { Badge } from '@/components/ui/badge'
 import { useDataRefresh } from '@/contexts/DataRefeshContext'
+import { Product } from '@/types'
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>
 }
 
-interface Product {
-  productId: string
-  productName: string
-  price: number
-  imageUrl: string
-}
+// interface Product {
+//   productId: string
+//   productName: string
+//   price: number
+//   imageUrl: string
+// }
 
-export default function DataViewDetail({ row }: DataTableRowActionsProps<Order>) {
+export default function DataViewDetail({ row }: DataTableRowActionsProps<Product>) {
   const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [newStatus, setNewStatus] = useState(row.getValue('status') as string)

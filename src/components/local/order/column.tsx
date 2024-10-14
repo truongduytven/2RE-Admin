@@ -1,5 +1,4 @@
 import { ColumnDef } from '@tanstack/react-table'
-// import { format } from 'date-fns'
 
 import { DataTableColumnHeader } from '@/components/local/order/data-table-column-header'
 
@@ -7,6 +6,7 @@ import { Order } from '@/types/index'
 import { Badge } from '@/components/ui/badge'
 import { formatCurrency } from '@/lib/utils'
 import DataViewDetail from './data-view-detail'
+import { format } from 'date-fns'
 
 export const columns: ColumnDef<Order>[] = [
   {
@@ -42,19 +42,24 @@ export const columns: ColumnDef<Order>[] = [
       return <div className='mx-5'>{formatCurrency(row.getValue('totalPrice'))}</div>
     },
   },
-  // {
-  //   accessorKey: 'CreateDate',
-  //   header: ({ column }) => <DataTableColumnHeader column={column} title='Ngày tạo' />,
-  //   cell: ({ row }) => {
-  //     const createdOnDate = new Date(row.getValue('CreateDate') ? row.getValue('CreateDate') : new Date())
-  //     return <div>{format(createdOnDate, 'dd/MM/yyyy')}</div>
-  //   }
-  // },
+  {
+    accessorKey: 'CreateDate',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Ngày tạo' />,
+    cell: ({ row }) => {
+      const createdOnDate = new Date(row.getValue('CreateDate') ? row.getValue('CreateDate') : new Date())
+      return <div className='ml-3'>{format(createdOnDate, 'dd/MM/yyyy')}</div>
+    }
+  },
   {
     accessorKey: 'status',
     header: ({ column }) => <DataTableColumnHeader column={column} title='Trạng thái' />,
     cell: ({ row }) => {
-      return <Badge className='bg-green-500 hover:bg-green-600'>{row.getValue('status')}</Badge>
+      switch (row.getValue('status')) {
+        case 'CHƯA THANH TOÁN': return <Badge className='bg-red-500 hover:bg-red-600'>CHƯA THANH TOÁN</Badge>
+        case 'ĐANG VẬN CHUYỂN': return <Badge className='bg-blue-500 hover:bg-blue-600'>ĐANG VẬN CHUYỂN</Badge>
+        case 'ĐÃ HOÀN THÀNH': return <Badge className='bg-green-500 hover:bg-green-600'>ĐÃ HOÀN THÀNH</Badge>
+        default: return <Badge className='bg-gray-500 hover:bg-gray-600'>ĐÃ HỦY</Badge>
+      }
     }
   },
   // {

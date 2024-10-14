@@ -20,4 +20,9 @@ export function formatProductType(type: string) {
 export function formatProductCategory(category: string) {
   return category.replace(/([A-Z])/g, ' $1').trim();
 }
-
+export function formatPrice (value: number): string {
+  return new Intl.NumberFormat('vi-VN').format(value) + 'đ'
+}
+export function convertPercentageToNumber(value: string): number {
+  return parseFloat(value.replace('%', ''));
+}

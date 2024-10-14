@@ -20,7 +20,9 @@ import {
   HandPlatter,
   Users,
   UsersRound,
-  SwatchBook
+  SwatchBook,
+  ClipboardList,
+  Package
 } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Handshake } from 'lucide-react'
@@ -71,23 +73,23 @@ export default function SideNavbar({ isAdmin }: SideNavbarProps) {
 
   const managerLinks = [
     {
-      title: 'Đơn hàng',
+      title: 'Dashboard',
       href: '/home/manager',
       icon: LayoutDashboard,
       variant: 'default' as 'default' | 'ghost'
     },
-    // {
-    //   title: 'Nhân viên',
-    //   href: '/staffs',
-    //   icon: Users,
-    //   variant: 'default' as 'default' | 'ghost'
-    // },
-    // {
-    //   title: 'Chuyến đi',
-    //   href: '/trips',
-    //   icon: Bus,
-    //   variant: 'default' as 'default' | 'ghost'
-    // },
+    {
+      title: 'Đơn hàng',
+      href: '/orders',
+      icon: ClipboardList,
+      variant: 'default' as 'default' | 'ghost'
+    },
+    {
+      title: 'Sản phẩm',
+      href: '/products',
+      icon: Package,
+      variant: 'default' as 'default' | 'ghost'
+    },
     // {
     //   title: 'Tuyến đường',
     //   href: '/routes',
