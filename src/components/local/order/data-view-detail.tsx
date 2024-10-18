@@ -21,6 +21,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
 import { Badge } from '@/components/ui/badge'
 import { useDataRefresh } from '@/contexts/DataRefeshContext'
+import { format } from 'date-fns'
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>
@@ -109,7 +110,11 @@ export default function DataViewDetail({ row }: DataTableRowActionsProps<Order>)
                     <SelectValue placeholder='Theme' />
                   </SelectTrigger>
                   <SelectContent>
-                    {statuses.map((status) => (
+                    {row.getValue('paymentMethod') === 'QRPAY' ? statuses.filter((status) => status != 'CHƯA THANH TOÁN').map((status) => (
+                      <SelectItem key={status} value={status}>
+                        {badgeColor(status)}
+                      </SelectItem>
+                    )) : statuses.map((status) => (
                       <SelectItem key={status} value={status}>
                         {badgeColor(status)}
                       </SelectItem>
@@ -119,6 +124,12 @@ export default function DataViewDetail({ row }: DataTableRowActionsProps<Order>)
               </div>
               <div className='text-lg'>
                 <span className='font-bold'>Tổng tiền:</span> {formatCurrency(row.getValue('totalPrice'))}
+              </div>
+              <div className='text-lg'>
+                <span className='font-bold'>Phương thức thanh toán:</span>{row.getValue('paymentMethod')}
+              </div>
+              <div className='text-lg'>
+                <span className='font-bold'>Ngày đặt: </span>{format(new Date(row.getValue('date') ? row.getValue('date') : new Date()), 'dd/MM/yyyy')}
               </div>
               <div className='text-lg mb-4'>
                 <span className='font-bold'>Sản phẩm:</span>

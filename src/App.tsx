@@ -13,6 +13,11 @@ import DashboardManager from './pages/DashboardManager'
 import TableProducts from './pages/TableProducts'
 import ProductUpdate from './pages/ProductUpdate'
 import AddProduct from './pages/AddProduct'
+import ProfilePage from './pages/ProfilePage'
+import AdminProtectedRoute from './auth/AdminProtectedRoute'
+import DashboardAdmin from './pages/DashboardAdmin'
+import TableUser from './pages/TableUser'
+import OrderOfUser from './pages/OrderOfUser'
 function App() {
   const [loading, setLoading] = useState(true)
   useEffect(() => {
@@ -32,6 +37,46 @@ function App() {
                 <DashboardManager />
               </Suspense>
             </ManagerProtectedRoute>
+          }
+        />
+        <Route
+          path='/home/admin'
+          element={
+            <AdminProtectedRoute>
+              <Suspense fallback={<Loader />}>
+                <DashboardAdmin />
+              </Suspense>
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path='/users'
+          element={
+            <AdminProtectedRoute>
+              <Suspense fallback={<Loader />}>
+                <TableUser />
+              </Suspense>
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path='/orderUser/:id'
+          element={
+            <AdminProtectedRoute>
+              <Suspense fallback={<Loader />}>
+                <OrderOfUser />
+              </Suspense>
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path='/shops'
+          element={
+            <AdminProtectedRoute>
+              <Suspense fallback={<Loader />}>
+                <TableUser />
+              </Suspense>
+            </AdminProtectedRoute>
           }
         />
         <Route
@@ -65,6 +110,16 @@ function App() {
           }
         />
         <Route
+          path='/profile'
+          element={
+            <ManagerProtectedRoute>
+              <Suspense fallback={<Loader />}>
+                <ProfilePage />
+              </Suspense>
+            </ManagerProtectedRoute>
+          }
+        />
+        <Route
           path='/products/add'
           element={
             <ManagerProtectedRoute>
@@ -89,6 +144,14 @@ function App() {
           <ManagerProtectedRoute>
             <ProductDetails />
           </ManagerProtectedRoute>
+        }
+      />
+      <Route
+        path='/productDetail/:id'
+        element={
+          <AdminProtectedRoute>
+            <ProductDetails />
+          </AdminProtectedRoute>
         }
       />
     </Routes>

@@ -15,7 +15,7 @@ function RowsPerPage<TData>({ table }: Props<TData>) {
   return (
     <div className="absolute right-0 top-2 flex gap-1 text-sm">
       <div className="flex items-center space-x-2">
-        <p className="text-sm font-medium">Rows per page</p>
+        <p className="text-sm font-medium">Số dòng mỗi trang</p>
         <Select
           value={`${table.getState().pagination.pageSize}`}
           onValueChange={(value: string) => {

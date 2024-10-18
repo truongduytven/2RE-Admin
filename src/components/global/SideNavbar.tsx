@@ -52,17 +52,17 @@ export default function SideNavbar({ isAdmin }: SideNavbarProps) {
       variant: 'ghost' as 'default' | 'ghost'
     },
     {
-      title: 'Công ty',
-      href: '/companies',
+      title: 'Cửa hàng',
+      href: '/shops',
       icon: Handshake,
       variant: 'ghost' as 'default' | 'ghost'
     },
-    {
-      title: 'Cài đặt',
-      href: '/settings',
-      icon: Settings,
-      variant: 'ghost' as 'default' | 'ghost'
-    }
+    // {
+    //   title: 'Cài đặt',
+    //   href: '/settings',
+    //   icon: Settings,
+    //   variant: 'ghost' as 'default' | 'ghost'
+    // }
     // {
     //   title: 'Đăng xuất',
     //   href: '/login',

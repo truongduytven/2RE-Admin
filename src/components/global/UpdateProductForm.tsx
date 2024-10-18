@@ -160,7 +160,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
       formEndData.append(`oldImg[${index}]`, url)
     })
 
-    formData.newImgUrl.forEach((file, index) => {
+    formData.newImgUrl.forEach((file) => {
       formEndData.append('listImgUrl', file)
     })
     console.log('FormData prepared for submission:')

@@ -14,6 +14,8 @@ const defaultValue: Order[] = [
     totalQuantity: 0,
     totalPrice: 0,
     nameUser: '',
+    date: '',
+    paymentMethod: '',
     status: ''
   }
 ]
@@ -34,7 +36,7 @@ export default function TableOrder() {
       setIsLoading(false)
     }
   }
-
+  console.log(Data)
   useEffect(() => {
     if (user) {
       fetchOrders()
@@ -49,7 +51,7 @@ export default function TableOrder() {
     <DataRefreshContext.Provider value={fetchOrders}>
       <div className='flex flex-col gap-5 w-full'>
         <PageTitle title='Đơn hàng' />
-        <DataTable columns={columns} data={Data} />
+        <DataTable columns={columns} data={Data} loading={isLoading}/>
       </div>
     </DataRefreshContext.Provider>
   )

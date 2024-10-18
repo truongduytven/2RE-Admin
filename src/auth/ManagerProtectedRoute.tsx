@@ -12,7 +12,7 @@ const ManagerProtectedRoute: React.FC<ManagerProtectedRouteProps> = ({ children 
     return <Navigate to="/" />
   }
 
-  if (!user.isShopOwner) {
+  if (user.RoleName !== 'Manager') {
     return <Navigate to="/not-authorized" />
   }
 

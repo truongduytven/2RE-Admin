@@ -15,7 +15,29 @@ export interface Order {
   totalQuantity: number
   totalPrice: number
   nameUser: string
+  date: string
+  paymentMethod: string
   status: string
+}
+
+export interface OrderUser {
+  orderId: string
+  totalPrice: number
+  dateTime: string
+  address: string
+  email: string
+  fullName: string
+  phone: string
+  listProducts: CartItem[]
+  status: string
+}
+
+export interface CartItem {
+  productId: string
+  name: string
+  size: string
+  imageUrl: string
+  price: number
 }
 
 export interface CartItem {
@@ -49,31 +71,23 @@ export interface ProductDetail {
   updatedAt: string
 }
 
-// {
-//   "productId": "b1f8c9e3-3e2b-4c4d-8e1a-2e6f5c3d8e0b",
-//   "shopId": "b1a3e477-9f5e-4bff-ae0a-5e8b42e0f8a0",
-//   "shopOwner": "Second Chance Styles",
-//   "categoryId": "c5e1f2b8-2f4c-4b3d-b7a8-4c5e6f7d8b9a",
-//   "category": "Áo Khoác",
-//   "genderCategoryId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-//   "genderCategory": "Nam",
-//   "sizeId": "e5a1b4d6-5c4c-4f0e-bc9f-4b85b6c5f4a3",
-//   "size": "M",
-//   "name": "Áo Khoác Da Nam",
-//   "price": 280000,
-//   "sale": 600000,
-//   "mainImgUrl": "https://product.hstatic.net/1000078312/product/ao-da-nam-trucker-jacket_71f1c31e72764a24833eedbeb00ecf50_master.jpg",
-//   "listImgUrl": [
-//     "https://product.hstatic.net/1000078312/product/ao-da-nam-kieu-jean_a349597f895c445b9aa61e5057438ef4_master.jpg"
-//   ],
-//   "description": "Áo khoác da cao cấp dành cho nam",
-//   "brand": "Nike",
-//   "condition": "70%",
-//   "status": "Có sẵn",
-//   "createdAt": "2024-10-12T14:26:13.8234751",
-//   "updatedAt": "2024-10-12T14:26:13.8234752"
-// }
-
+export interface DataUser {
+  userId: string
+  userName: string
+  passWord: string
+  email: string
+  address: string
+  phoneNumber: string
+  roleId: string
+  roleName: string
+  isShopOwner: boolean
+  shopName: string
+  shopAddress: string
+  shopDescription: string
+  shopLogo: string
+  createdAt: string
+  updatedAt: string
+}
 export interface Order {
   id: string
   totalQuantity: number

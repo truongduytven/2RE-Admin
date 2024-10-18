@@ -21,6 +21,8 @@ interface User {
   address: string
   phoneNumber: string
   roleId: string
+  roleName: string
+  RoleName: string
   isShopOwner: boolean
   shopName: string
   shopAddress: string
@@ -85,7 +87,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           })
           const userData = {
             ...response.data.result.user,
-            RoleName: response.data.result.user.isShopOwner ? 'Manager' : 'Admin'
+            RoleName:  response.data.result.user.roleName === 'Admin' ? 'Admin' : response.data.result.user.isShopOwner ? 'Manager' : 'Buyer'
           }
           setUser(userData)
         } catch (error) {
@@ -114,10 +116,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           const response = await REAPI.get('/api/Auth/CheckToken')
           const userData = {
             ...response.data.result.user,
-            RoleName: response.data.result.user.isShopOwner ? 'Manager' : 'Admin'
+            RoleName: response.data.result.user.roleName === 'Admin' ? 'Admin' : response.data.result.user.isShopOwner ? 'Manager' : 'Buyer'
           }
           setUser(userData)
-          if (userData.isShopOwner) {
+          if (response.data.result.user.roleName === 'Admin' || (response.data.result.user.roleName === 'User' && response.data.result.user.isShopOwner)) {
             toast.success('Đăng nhập thành công')
             navigate(`/home/${response.data.result.user.isShopOwner ? 'manager' : 'admin'}`)
           } else {
@@ -131,7 +133,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           setLoading(false)
         }
       }
-
       await fetchUser()
     } catch (error) {
       setLoading(false)

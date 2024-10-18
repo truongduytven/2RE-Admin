@@ -74,7 +74,7 @@ export const columns: ColumnDef<Product>[] = [
     cell: ({ row }) => {
       return (
         <div className='flex w-full justify-center'>
-          {row.getValue('status') === 'Có sẵn' ? (
+          {row.getValue('status') === 'Có sẵn' ||  row.getValue('status') === 'CÓ SẴN' ? (
             <Badge className='bg-green-500 hover:bg-green-600'>Có sẵn</Badge>
           ) : (
             <Badge className='bg-red-500 hover:bg-red-600'>Hết hàng</Badge>

@@ -13,7 +13,7 @@ const AdminProtectedRoute: React.FC<AdminProtectedRouteProps> = ({ children }) =
     return <Navigate to="/" />
   }
 
-  if (user.isShopOwner) {
+  if (user.RoleName !== 'Admin') {
     return <Navigate to="/not-authorized" />
   }
 

@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { cn, convertPercentageToNumber } from '@/lib/utils'
 import { ArrowLeft, X } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/auth/AuthContext'
 
 interface Size {
@@ -52,6 +52,7 @@ export default function AddProduct() {
   const [isLoading, setIsLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { user } = useAuth()
+  const navigate = useNavigate()
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -143,11 +144,12 @@ export default function AddProduct() {
         }
       })
       if (response.status === 200) {
-        toast.success('Cập nhật sản phẩm thành công')
+        toast.success('Tạo sản phẩm thành công')
       }
+      navigate('/products')
     } catch (error) {
       console.error('Error updating product:', error)
-      toast.error('Cập nhật sản phẩm thất bại')
+      toast.error('Tạo sản phẩm thất bại')
     } finally {
       setIsSubmitting(false)
     }

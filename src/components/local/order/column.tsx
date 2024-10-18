@@ -43,11 +43,18 @@ export const columns: ColumnDef<Order>[] = [
     },
   },
   {
-    accessorKey: 'CreateDate',
+    accessorKey: 'date',
     header: ({ column }) => <DataTableColumnHeader column={column} title='Ngày tạo' />,
     cell: ({ row }) => {
-      const createdOnDate = new Date(row.getValue('CreateDate') ? row.getValue('CreateDate') : new Date())
-      return <div className='ml-3'>{format(createdOnDate, 'dd/MM/yyyy')}</div>
+      const createdOnDate = new Date(row.getValue('date') ? row.getValue('date') : new Date())
+      return <div className='ml-3'>{format(createdOnDate, 'Pp')}</div>
+    }
+  },
+  {
+    accessorKey: 'paymentMethod',
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Phương thức thanh toán' />,
+    cell: ({ row }) => {
+      return <div className='flex justify-center'>{row.getValue('paymentMethod')}</div>
     }
   },
   {
@@ -62,16 +69,6 @@ export const columns: ColumnDef<Order>[] = [
       }
     }
   },
-  // {
-  //   accessorKey: 'status',
-  //   header: ({ column }) => <DataTableColumnHeader column={column} title='Status' />,
-  //   cell: ({ row }) => {
-  //     const status = row.getValue('status') as IUserStatus
-  //     const color = status === IUserStatus.Active ? '#4DB848' : '#E53E3E'
-  //     const content = status === IUserStatus.Active ? 'Active' : 'Inactive'
-  //     return <Chip content={content} color={color} />
-  //   }
-  // },
   {
     id: 'actions',
     cell: ({ row }) => {
