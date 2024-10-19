@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import RouteLayout from './components/global/RootLayout'
 import ManagerProtectedRoute from './auth/ManagerProtectedRoute'
 import { Suspense, useEffect, useState } from 'react'
-import Order from './pages/Order'
+// import Order from './pages/Order'
 import Loader from './components/Loading/Loader'
 import ProtectedRoute from './auth/ProtectedRoute'
 import SignInForm from './components/global/SignInForm'
@@ -18,6 +18,9 @@ import AdminProtectedRoute from './auth/AdminProtectedRoute'
 import DashboardAdmin from './pages/DashboardAdmin'
 import TableUser from './pages/TableUser'
 import OrderOfUser from './pages/OrderOfUser'
+import TableShops from './pages/TableShops'
+import ShopDetails from './pages/ShopDetails'
+import AddShop from './pages/AddShop'
 function App() {
   const [loading, setLoading] = useState(true)
   useEffect(() => {
@@ -74,7 +77,17 @@ function App() {
           element={
             <AdminProtectedRoute>
               <Suspense fallback={<Loader />}>
-                <TableUser />
+                <TableShops />
+              </Suspense>
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path='/shops/:id'
+          element={
+            <AdminProtectedRoute>
+              <Suspense fallback={<Loader />}>
+                <ShopDetails />
               </Suspense>
             </AdminProtectedRoute>
           }
@@ -127,6 +140,16 @@ function App() {
                 <AddProduct />
               </Suspense>
             </ManagerProtectedRoute>
+          }
+        />
+        <Route
+          path='/shops/add'
+          element={
+            <AdminProtectedRoute>
+              <Suspense fallback={<Loader />}>
+                <AddShop />
+              </Suspense>
+            </AdminProtectedRoute>
           }
         />
       </Route>

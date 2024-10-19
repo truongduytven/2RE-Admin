@@ -70,7 +70,7 @@ import {
                 />
               </DropdownMenuTrigger>
               <DropdownMenuContent className='w-fit'>
-                <DropdownMenuLabel className='py-0'>{user?.shopName}</DropdownMenuLabel>
+                <DropdownMenuLabel className='py-0'>{user?.isShopOwner ? user.shopName : user.userName}</DropdownMenuLabel>
                 <DropdownMenuItem className='py-0 text-xs' disabled>
                   {user?.email}
                 </DropdownMenuItem>

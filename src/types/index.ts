@@ -71,6 +71,17 @@ export interface ProductDetail {
   updatedAt: string
 }
 
+export interface ShopDetail {
+  shopName: string
+  shopLogo: string
+  shopDescription: string
+  shopAddress: string
+  shopPhone: string
+  totalRating: number
+  quantityRating: number
+  reviews: string[]
+}
+
 export interface DataUser {
   userId: string
   userName: string

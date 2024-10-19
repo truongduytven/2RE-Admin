@@ -2,7 +2,7 @@ import { useAuth } from '@/auth/AuthContext'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button, ConfigProvider, Form, Input } from 'antd'
 import { RuleObject } from 'antd/lib/form'
-import { Key, PiggyBank } from 'lucide-react'
+import { Key, PiggyBank, Shell } from 'lucide-react'
 import { useCallback, useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import Loading from '@/components/Loading/Loading'
@@ -69,11 +69,11 @@ function ProfilePage() {
     formData.append('address', values.Address || user?.address)
     formData.append('phoneNumber', values.PhoneNumber || user?.phoneNumber)
     formData.append('passWord', values.Password)
-    // formData.append('newPassword', values.NewPassword)
+    formData.append('newPassWord', values.NewPassword)
     // formData.append('confirmPassword', values.ConfirmPassword)
-    formData.append('shopName', '')
-    formData.append('shopAddress', '')
-    formData.append('shopDescription', '')
+    formData.append('shopName', values.shopName || user?.shopName)
+    formData.append('shopAddress', values.shopAddress || user?.shopAddress)
+    formData.append('shopDescription', values.shopDescription || user?.shopDescription)
     formData.append('shopLogo', '')
 
     // if (file) {
@@ -88,7 +88,7 @@ function ProfilePage() {
     try {
       const response = await REAPI.put(`/update/profile/${user?.userId}`, formData)
       setIsLoading(false)
-      toast.success('Cập nhật profile thành công')
+      toast.success('Cập nhật hồ sơ thành công')
       console.log('Profile updated successfully:', response)
       console.log('Profile updated successfully:', response.data)
       setHasChanges(false)
@@ -304,7 +304,7 @@ function ProfilePage() {
                     className={`${isLoading ? 'bg-orange-500 text-white' : ''}`}
                     disabled={!hasChanges}
                   >
-                    {isLoading && <Loading />}
+                    {isLoading && <Shell className='w-4 h-4 ml-1 animate-spin' />}
                     Cập nhật
                   </Button>
                 </Form.Item>
