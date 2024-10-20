@@ -56,7 +56,7 @@ export default function TableProducts() {
     <DataRefreshContext.Provider value={fetchProducts}>
       <div className='flex flex-col gap-5 w-full'>
         <PageTitle title='Danh sách sản phẩm' />
-        <DataTable columns={columns} data={Data} />
+        <DataTable columns={columns} data={Data} loading={isLoading}/>
       </div>
     </DataRefreshContext.Provider>
   )

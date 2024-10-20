@@ -12,6 +12,7 @@ import { useDropzone } from 'react-dropzone'
 
 function ProfilePage() {
   const { user, errorMessage, loading } = useAuth()
+  const [shopData, setShopData] = useState<any>({})
   const [isLoading, setIsLoading] = useState(false)
   const [hasChanges, setHasChanges] = useState(false)
   const [form] = Form.useForm()
@@ -21,20 +22,33 @@ function ProfilePage() {
   console.log(user)
 
   useEffect(() => {
+    const fetchShopData = async () => {
+      try {
+        const response = await REAPI.get(`/detail/${user?.userId}`)
+        const shopdata = response.data
+        setShopData(shopdata)
+        form.setFieldsValue({
+          userName: shopdata.userName,
+          email: user?.email,
+          PhoneNumber: shopdata.phoneNumber,
+          shopName: shopdata.shopName,
+          shopAddress: shopdata.shopAddress,
+          shopDescription: shopdata.shopDescription,
+          shopLogo: shopdata.shopLogo,
+          Address: user?.address,
+          shopPhone: shopdata.shopPhone,
+          shopBankId: shopdata.shopBankId,
+          shopBank: shopdata.shopBank,
+          Password: '',
+          NewPassword: '',
+          ConfirmPassword: ''
+        })
+      } catch (error) {
+        console.error('Error fetching shop data:', error)
+      }
+    }
     if (user) {
-      form.setFieldsValue({
-        userName: user.userName,
-        email: user.email,
-        PhoneNumber: user.phoneNumber,
-        shopName: user.shopName,
-        shopAddress: user.shopAddress,
-        shopDescription: user.shopDescription,
-        shopLogo: user.shopLogo,
-        Address: user.address,
-        Password: '',
-        NewPassword: '',
-        ConfirmPassword: ''
-      })
+      fetchShopData()
     }
   }, [user, form])
   const onDrop = useCallback((acceptedFiles: Array<File>) => {
@@ -74,7 +88,13 @@ function ProfilePage() {
     formData.append('shopName', values.shopName || user?.shopName)
     formData.append('shopAddress', values.shopAddress || user?.shopAddress)
     formData.append('shopDescription', values.shopDescription || user?.shopDescription)
-    formData.append('shopLogo', '')
+    formData.append('shopBank', values.shopBank || '')
+    formData.append('shopBankId', values.shopBankId || '')
+    if(file) {
+      formData.append('shopLogo', file)
+    } else {
+      formData.append('shopLogo', '')
+    }
 
     // if (file) {
     //   formData.append('Avatar', file)
@@ -177,6 +197,9 @@ function ProfilePage() {
               shopName: user?.shopName,
               shopAddress: user?.shopAddress,
               shopDescription: user?.shopDescription,
+              shopPhone: shopData.shopPhone,
+              shopBankId: shopData.shopBankId,
+              shopBank: shopData.shopBank,
               NewPassword: '',
               ConfirmPassword: ''
             }}
@@ -197,7 +220,11 @@ function ProfilePage() {
                     <input {...getInputProps()} />
                     {!preview ? (
                       <Avatar className='h-full w-full' title='Change avatar'>
-                        <AvatarImage className='object-cover' src={user?.shopLogo ? user.shopLogo : "https://github.com/shadcn.png"} alt='avatar' />
+                        <AvatarImage
+                          className='object-cover'
+                          src={user?.shopLogo ? user.shopLogo : 'https://github.com/shadcn.png'}
+                          alt='avatar'
+                        />
                         <AvatarFallback>{user?.shopName}</AvatarFallback>
                       </Avatar>
                     ) : (
@@ -221,47 +248,66 @@ function ProfilePage() {
                 <Form.Item
                   name='userName'
                   label={<span className='font-medium'>Tên người dùng</span>}
-                  rules={[{ required: false }]}
+                  rules={[{ required: true }]}
                 >
                   <Input placeholder='Tên người dùng' />
                 </Form.Item>
-                <Form.Item className='hidden' name='avatar' label='Avatar' />
+                {/* <Form.Item className='hidden' name='avatar' label='Avatar' /> */}
                 <Form.Item
                   name='Address'
                   label={<span className='font-medium'>Địa chỉ</span>}
-                  rules={[{ required: false }]}
+                  rules={[{ required: true }]}
                 >
                   <Input placeholder='Địa chỉ' />
                 </Form.Item>
                 <Form.Item
                   name='shopName'
                   label={<span className='font-medium'>Tên cửa hàng</span>}
-                  rules={[{ required: false }]}
+                  rules={[{ required: true }]}
                 >
                   <Input placeholder='Địa chỉ' />
                 </Form.Item>
                 <Form.Item
                   name='shopAddress'
                   label={<span className='font-medium'>Địa chỉ cửa hàng</span>}
-                  rules={[{ required: false }]}
+                  rules={[{ required: true }]}
                 >
                   <Input placeholder='Địa chỉ' />
                 </Form.Item>
                 <Form.Item
                   name='shopDescription'
                   label={<span className='font-medium'>Chi tiết cửa hàng</span>}
-                  rules={[{ required: false }]}
+                  rules={[{ required: true }]}
                 >
                   <TextArea placeholder='Địa chỉ' />
                 </Form.Item>
 
                 <Form.Item
                   name='PhoneNumber'
-                  label={<span className='font-medium'>PhoneNumber</span>}
-                  rules={[{ required: false }, { validator: validatePhoneNumber }]}
+                  label={<span className='font-medium'>Số điện thoại</span>}
+                  rules={[{ required: true }, { validator: validatePhoneNumber }]}
                 >
                   <Input placeholder='Số điện thoại' />
                 </Form.Item>
+                <div className='flex gap-5'>
+                  <Form.Item
+                    name='shopBankId'
+                    className='flex-1'
+                    label={<span className='font-medium'>Số tài khoản ngân hàng</span>}
+                    rules={[{ required: true }]}
+                  >
+                    <Input placeholder='Số điện thoại' />
+                  </Form.Item>
+                  <Form.Item
+                    name='shopBank'
+                    className='flex-1'
+                    label={<span className='font-medium'>Tên ngân hàng</span>}
+                    rules={[{ required: true }]}
+                  >
+                    <Input placeholder='Số điện thoại' />
+                  </Form.Item>
+                </div>
+
                 <Form.Item name='email' label={<span className='font-medium'>Email</span>} rules={[{ required: true }]}>
                   <Input className='cursor-not-allowed' disabled />
                 </Form.Item>
@@ -301,7 +347,7 @@ function ProfilePage() {
                   <Button
                     type='dashed'
                     htmlType='submit'
-                    className={`${isLoading ? 'bg-orange-500 text-white' : ''}`}
+                    className={`${isLoading ? 'bg-primary text-white' : ''}`}
                     disabled={!hasChanges}
                   >
                     {isLoading && <Shell className='w-4 h-4 ml-1 animate-spin' />}

@@ -5,6 +5,7 @@ import { DataTableColumnHeader } from '@/components/local/shops/data-table-colum
 import { DataUser } from '@/types/index'
 import { Link } from 'react-router-dom'
 import { Ellipsis } from 'lucide-react'
+import { DataTableRowActions } from './data-table-row-actions'
 // import { Badge } from '@/components/ui/badge'
 // import { formatCurrency } from '@/lib/utils'
 // import DataViewDetail from '@/components/local/products/data-view-detail'
@@ -74,12 +75,7 @@ export const columns: ColumnDef<DataUser>[] = [
     id: 'actions',
     cell: ({ row }) => {
       return (
-        <Link
-          to={`/shops/${row.getValue('userId')}`}
-          className='cursor-pointer flex-1 flex text-sm font-bold items-center justify-end'
-        >
-          <Ellipsis className='ml-2' size={20} />
-        </Link>
+        <DataTableRowActions row={row} />
       )
     }
   }

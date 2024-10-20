@@ -74,9 +74,15 @@ export interface ProductDetail {
 export interface ShopDetail {
   shopName: string
   shopLogo: string
+  email: string
   shopDescription: string
   shopAddress: string
   shopPhone: string
+  userName: string
+  phoneNumber: string
+  address: string
+  shopBank: string
+  shopBankId: string
   totalRating: number
   quantityRating: number
   reviews: string[]
@@ -135,17 +141,15 @@ export interface Product {
   sale: number
 }
 
-// {
-//   "productId": "80bb1d76-a069-4d84-938c-093e69361edd",
-//   "shopOwner": "Second Chance Styles",
-//   "category": "Áo Khoác",
-//   "genderCategory": "Nam",
-//   "size": "XL",
-//   "name": "Áo khoác dù",
-//   "price": 120000,
-//   "sale": 320000,
-//   "imgUrl": "https://scontent-sin6-4.xx.fbcdn.net/v/t39.30808-6/462257865_1190650772191304_1392401977120547997_n.jpg?stp=cp6_dst-jpg_s600x600&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeErLHf7ymM8uyesrfOXC24lvGnJU8lIQsa8aclTyUhCxmdsMgKE1TZSU36NRk3XohQUxDlhjgbXrTVOcGCbhMET&_nc_ohc=hwkHpKGrjMMQ7kNvgFiBnO1&_nc_ht=scontent-sin6-4.xx&_nc_gid=APb3_YKYzZw9_Pl9nf05khJ&oh=00_AYDqKV6O7JLdiak193d3cpk7ivxU8avHllVw7TZTPP592Q&oe=67099017",
-//   "brand": "Adidas",
-//   "condition": "80%",
-//   "status": "Có sẵn"
-// },
+export interface IDashboardAdmin {
+  totalUsers: number
+  totalShops: number
+  totalOrdersThisMonth: number
+  monthlyRevenue: MothRevenueAdmin[]
+  top5Shop: string[]
+}
+
+export type MothRevenueAdmin = {
+  month: number
+  revenue: number
+}

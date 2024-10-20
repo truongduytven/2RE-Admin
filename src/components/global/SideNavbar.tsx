@@ -3,8 +3,6 @@
 
 import { useState } from 'react'
 import { Nav } from '../global/nav'
-import addressIcon from '@/assets/address.svg'
-
 interface SideNavbarProps {
   isAdmin: boolean
 }
@@ -12,17 +10,10 @@ interface SideNavbarProps {
 import {
   ChevronRight,
   LayoutDashboard,
-  Settings,
-  ShoppingCart,
-  Bus,
-  Route,
-  LandPlot,
-  HandPlatter,
-  Users,
   UsersRound,
-  SwatchBook,
   ClipboardList,
-  Package
+  Package,
+  Wallet
 } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Handshake } from 'lucide-react'
@@ -90,12 +81,12 @@ export default function SideNavbar({ isAdmin }: SideNavbarProps) {
       icon: Package,
       variant: 'default' as 'default' | 'ghost'
     },
-    // {
-    //   title: 'Tuyến đường',
-    //   href: '/routes',
-    //   icon: Route,
-    //   variant: 'default' as 'default' | 'ghost'
-    // },
+    {
+      title: 'Tổng kết',
+      href: '/transactions',
+      icon: Wallet,
+      variant: 'default' as 'default' | 'ghost'
+    },
     // {
     //   title: 'Trạm dừng',
     //   href: '/stations',

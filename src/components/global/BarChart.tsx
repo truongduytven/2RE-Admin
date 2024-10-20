@@ -72,7 +72,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="custom-tooltip bg-white border p-3">
         <p className="label">{`Tháng: ${label}`}</p>
-        <p className="intro">{`Doanh thu: ${formatPrice(payload[0].value)}`}</p>
+        <p className="intro">{`Doanh thu: ${formatPrice(payload[0].value*0.1)}`}</p>
       </div>
     );
   }
@@ -96,7 +96,7 @@ export default function BarChartManager({ data }: BarChartProps) {
           axisLine={false}
           stroke="#88888"
           fontSize={12}
-          tickFormatter={(value) => formatPrice(value)}
+          tickFormatter={(value) => formatPrice(value * 0.1)}
         />
         <Tooltip content={<CustomTooltip />}/>
         <Bar dataKey={"revenue"} radius={[4, 4, 0, 0]}/>

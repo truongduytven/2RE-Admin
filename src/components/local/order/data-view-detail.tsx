@@ -22,6 +22,7 @@ import { toast } from 'sonner'
 import { Badge } from '@/components/ui/badge'
 import { useDataRefresh } from '@/contexts/DataRefeshContext'
 import { format } from 'date-fns'
+import { useAuth } from '@/auth/AuthContext'
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>
@@ -39,6 +40,7 @@ export default function DataViewDetail({ row }: DataTableRowActionsProps<Order>)
   const [isLoading, setIsLoading] = useState(false)
   const [newStatus, setNewStatus] = useState(row.getValue('status') as string)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const { user } = useAuth()
   const refeshData = useDataRefresh()
   const statuses = ['CHƯA THANH TOÁN', 'ĐANG VẬN CHUYỂN', 'ĐÃ HOÀN THÀNH', 'ĐÃ HỦY']
   const handleViews = async (id: string) => {
@@ -105,7 +107,7 @@ export default function DataViewDetail({ row }: DataTableRowActionsProps<Order>)
               </div>
               <div className='text-lg flex items-center gap-5'>
                 <span className='font-bold'>Trạng thái:</span>
-                <Select onValueChange={(value) => setNewStatus(value)} defaultValue={row.getValue('status')}>
+                <Select disabled={user?.RoleName !== 'User'} onValueChange={(value) => setNewStatus(value)} defaultValue={row.getValue('status')}>
                   <SelectTrigger className='w-[180px]'>
                     <SelectValue placeholder='Theme' />
                   </SelectTrigger>

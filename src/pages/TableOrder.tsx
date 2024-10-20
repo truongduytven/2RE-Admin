@@ -7,6 +7,7 @@ import REAPI from '@/lib/2REAPI'
 import { Order } from '@/types'
 import { useEffect, useState } from 'react'
 import { DataRefreshContext } from '@/contexts/DataRefeshContext'
+import { useParams } from 'react-router-dom'
 
 const defaultValue: Order[] = [
   {
@@ -21,13 +22,15 @@ const defaultValue: Order[] = [
 ]
 
 export default function TableOrder() {
+  const { id } = useParams()
   const [Data, setData] = useState<Order[]>(defaultValue)
   const { user } = useAuth()
   const [isLoading, setIsLoading] = useState(false)
   const fetchOrders = async () => {
     try {
       setIsLoading(true)
-      const response = await REAPI.get(`/product/order-from-shop/${user?.userId}`)
+      const endpoint = id ? `/product/order-from-shop/${id}` : `/product/order-from-shop/${user?.userId}`
+      const response = await REAPI.get(endpoint)
       const data = await response.data
       setData(data)
     } catch (error) {
@@ -41,7 +44,7 @@ export default function TableOrder() {
     if (user) {
       fetchOrders()
     }
-  }, [user])
+  }, [user, id])
 
   if (isLoading) {
     return <Loading />

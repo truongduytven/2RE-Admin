@@ -21,6 +21,7 @@ import OrderOfUser from './pages/OrderOfUser'
 import TableShops from './pages/TableShops'
 import ShopDetails from './pages/ShopDetails'
 import AddShop from './pages/AddShop'
+import Transaction from './pages/Transaction'
 function App() {
   const [loading, setLoading] = useState(true)
   useEffect(() => {
@@ -103,6 +104,16 @@ function App() {
           }
         />
         <Route
+          path='/orders/:id'
+          element={
+            <AdminProtectedRoute>
+              <Suspense fallback={<Loader />}>
+                <TableOrder />
+              </Suspense>
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
           path='/products'
           element={
             <ManagerProtectedRoute>
@@ -150,6 +161,26 @@ function App() {
                 <AddShop />
               </Suspense>
             </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path='/transactions/:id'
+          element={
+            <AdminProtectedRoute>
+              <Suspense fallback={<Loader />}>
+                <Transaction />
+              </Suspense>
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path='/transactions'
+          element={
+            <ManagerProtectedRoute>
+              <Suspense fallback={<Loader />}>
+                <Transaction />
+              </Suspense>
+            </ManagerProtectedRoute>
           }
         />
       </Route>
