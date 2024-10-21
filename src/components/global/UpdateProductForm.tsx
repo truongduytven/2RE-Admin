@@ -404,7 +404,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
           name='description'
           value={formData.description}
           onChange={handleChange}
-          className='border p-2 rounded w-full'
+          className='border p-2 rounded w-full bg-white'
         />
       </div>
 

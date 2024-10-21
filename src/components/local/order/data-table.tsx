@@ -96,7 +96,7 @@ export function DataTable<TData, TValue>({
             </TableHeader>
             <TableBody>
               {[...Array(10)].map((_, rowIndex) => (
-                <TableRow key={rowIndex}>
+                <TableRow className="bg-white" key={rowIndex}>
                   {columns.map((_, colIndex) => (
                     <TableCell key={colIndex}>
                       <Skeleton className="h-7 w-full" />
@@ -131,7 +131,7 @@ export function DataTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell className="bg-white" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

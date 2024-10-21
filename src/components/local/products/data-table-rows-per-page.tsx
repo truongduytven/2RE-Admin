@@ -22,7 +22,7 @@ function RowsPerPage<TData>({ table }: Props<TData>) {
             table.setPageSize(Number(value))
           }}
         >
-          <SelectTrigger className="h-8 w-[70px]">
+          <SelectTrigger className="h-8 w-[70px] bg-white">
             <SelectValue placeholder={table.getState().pagination.pageSize} />
           </SelectTrigger>
           <SelectContent side="top">

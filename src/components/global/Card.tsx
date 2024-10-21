@@ -11,11 +11,9 @@ export type CardProps = {
 
 export default function Card(props: CardProps) {
   return (
-    <CardContent>
+    <CardContent className='bg-white'>
       <section className='flex justify-between gap-2'>
-        {/* label */}
         <p className='text-sm font-bold text-primary'>{props.label}</p>
-        {/* icon */}
         <props.icon className='h-6 w-6 text-gray-400' />
       </section>
       <section className='flex items-center gap-5'>

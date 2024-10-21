@@ -17,12 +17,13 @@ function RowsPerPage<TData>({ table }: Props<TData>) {
       <div className="flex items-center space-x-2">
         <p className="text-sm font-medium">Số dòng mỗi trang</p>
         <Select
+          
           value={`${table.getState().pagination.pageSize}`}
           onValueChange={(value: string) => {
             table.setPageSize(Number(value))
           }}
         >
-          <SelectTrigger className="h-8 w-[70px]">
+          <SelectTrigger className="h-8 w-[70px] bg-white">
             <SelectValue placeholder={table.getState().pagination.pageSize} />
           </SelectTrigger>
           <SelectContent side="top">

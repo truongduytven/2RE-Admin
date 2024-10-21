@@ -107,13 +107,13 @@ export default function SideNavbar({ isAdmin }: SideNavbarProps) {
     // }
   ]
   return (
-    <div className='relative min-w-[80px] min-h-screen h-fit transition-all duration-300 ease-in-out border-r px-3 pb-10 pt-24'>
+    <div className='relative bg-teriary min-w-[80px] min-h-screen h-fit transition-all duration-300 ease-in-out border-r px-3 pb-10 pt-24'>
       {!mobileWidth && (
         <div className='absolute right-[-20px] top-24 '>
           <Button
             onClick={toggleSidebar}
             variant='secondary'
-            className=' rounded-full p-2 transition-transform duration-300'
+            className=' rounded-full bg-white p-2 transition-transform duration-300'
             style={{ transform: isCollapsed ? 'rotate(180deg)' : 'rotate(0deg)' }}
           >
             <ChevronRight className='text-black' />

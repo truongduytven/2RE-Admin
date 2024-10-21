@@ -68,7 +68,7 @@ export default function DashboardManager() {
         />
       </section>
       <section className='grid grid-cols-1  gap-4 transition-all'>
-        <CardContent>
+        <CardContent className='bg-white'>
           <p className='mb-4 font-semibold text-xl text-primary'>Tổng doanh thu trong năm</p>
 
           <BarChartManager data={data?.monthlyRevenue} />

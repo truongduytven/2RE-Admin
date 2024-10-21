@@ -8,7 +8,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type, unit, ...props }, ref) => {
   return (
-    <div className='relative'>
+    <div className='relative bg-white rounded-md'>
       <input
         type={type}
         className={cn(
