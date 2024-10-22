@@ -51,9 +51,9 @@ import {
                   alt='avatar'
                 />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className='w-fit'>
+              <DropdownMenuContent className='w-fit bg-teriary text-primary'>
                 <DropdownMenuLabel className='py-0'>{user?.isShopOwner ? user.shopName : user.userName}</DropdownMenuLabel>
-                <DropdownMenuItem className='py-0 text-xs' disabled>
+                <DropdownMenuItem className='py-0 text-xs text-gray-800 line-clamp-1 font-bold' disabled>
                   {user?.email}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />

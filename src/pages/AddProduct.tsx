@@ -5,7 +5,7 @@ import { toast } from 'sonner'
 import Loading from '@/components/Loading/Loading'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { cn, convertPercentageToNumber } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import { ArrowLeft, X } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/auth/AuthContext'
@@ -263,7 +263,7 @@ export default function AddProduct() {
               required
               onValueChange={(value) => handleSelectChange('sizeId', value)}
             >
-              <SelectTrigger>
+              <SelectTrigger className='border-[#b2927b]/30 bg-[#e8dfd7]'>
                 <SelectValue placeholder='Kích cỡ' />
               </SelectTrigger>
               <SelectContent>
@@ -287,7 +287,7 @@ export default function AddProduct() {
               value={formData.genderCategoryId}
               onValueChange={(value) => handleSelectChange('genderCategoryId', value)}
             >
-              <SelectTrigger>
+              <SelectTrigger className='border-[#b2927b]/30 bg-[#e8dfd7]'>
                 <SelectValue placeholder='Giới tính' />
               </SelectTrigger>
               <SelectContent>
@@ -324,7 +324,7 @@ export default function AddProduct() {
               value={formData.categoryId}
               onValueChange={(value) => handleSelectChange('categoryId', value)}
             >
-              <SelectTrigger>
+              <SelectTrigger className='border-[#b2927b]/30 bg-[#e8dfd7]'>
                 <SelectValue placeholder='' />
               </SelectTrigger>
               <SelectContent>
@@ -343,7 +343,7 @@ export default function AddProduct() {
             Thương hiệu:
           </label>
           <Select name='brand' value={formData.brand} onValueChange={(value) => handleSelectChange('brand', value)}>
-            <SelectTrigger>
+            <SelectTrigger className='border-[#b2927b]/30 bg-[#e8dfd7]'> 
               <SelectValue placeholder='' />
             </SelectTrigger>
             <SelectContent>
@@ -365,7 +365,7 @@ export default function AddProduct() {
             name='description'
             value={formData.description}
             onChange={handleChange}
-            className='border p-2 rounded w-full bg-teriary'
+            className='border p-2 rounded w-full border-[#b2927b]/30 bg-[#e8dfd7]'
           />
         </div>
 

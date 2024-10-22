@@ -80,7 +80,7 @@ export default function AddShop() {
 
   return (
     <div>
-      <div className='flex justify-between items-center mb-6'>
+      <div className='flex justify-between items-center mb-6 text-primary'>
         <div className='flex gap-2'>
           <div className='text-3xl font-bold'>Thêm mới cửa hàng</div>
         </div>
@@ -94,7 +94,7 @@ export default function AddShop() {
       </div>
       <form onSubmit={handleSubmit} className='space-y-4'>
         <div>
-          <label className='block'>Logo cửa hàng:</label>
+          <label className='block text-primary'>Logo cửa hàng:</label>
 
           <div className='flex gap-2 mt-2'>
             {formData.shopLogo && (
@@ -109,7 +109,7 @@ export default function AddShop() {
           </div>
         </div>
         <div>
-          <label htmlFor='name' className='block'>
+          <label htmlFor='name' className='block text-primary'>
             Tên khách hàng:
           </label>
           <Input
@@ -125,7 +125,7 @@ export default function AddShop() {
         </div>
         
         <div>
-          <label htmlFor='name' className='block'>
+          <label htmlFor='name' className='block text-primary'>
             Tên cửa hàng:
           </label>
           <Input
@@ -142,7 +142,7 @@ export default function AddShop() {
 
         <div className='flex w-full justify-between gap-5'>
           <div className='flex-1'>
-            <label htmlFor='price' className='block'>
+            <label htmlFor='price' className='block text-primary'>
               Email:
             </label>
             <Input
@@ -157,7 +157,7 @@ export default function AddShop() {
             />
           </div>
           <div className='flex-1'>
-            <label htmlFor='sale' className='block'>
+            <label htmlFor='sale' className='block text-primary'>
               Số điện thoại khách hàng:
             </label>
             <Input
@@ -172,7 +172,7 @@ export default function AddShop() {
             />
           </div>
           <div className='flex-1'>
-            <label htmlFor='sale' className='block'>
+            <label htmlFor='sale' className='block text-primary'>
               Số điện thoại cửa hàng:
             </label>
             <Input
@@ -189,7 +189,7 @@ export default function AddShop() {
         </div>
 
         <div>
-          <label htmlFor='name' className='block'>
+          <label htmlFor='name' className='block text-primary'>
             Địa chỉ khách hàng:
           </label>
           <Input
@@ -205,7 +205,7 @@ export default function AddShop() {
         </div>
 
         <div>
-          <label htmlFor='name' className='block'>
+          <label htmlFor='name' className='block text-primary'>
             Địa chỉ cửa hàng:
           </label>
           <Input
@@ -221,7 +221,7 @@ export default function AddShop() {
         </div>
 
         <div>
-          <label htmlFor='name' className='block'>
+          <label htmlFor='name' className='block text-primary'>
             Mật khẩu:
           </label>
           <Input
@@ -237,7 +237,7 @@ export default function AddShop() {
         </div>
 
         <div>
-          <label htmlFor='description' className='block'>
+          <label htmlFor='description' className='block text-primary'>
             Mô tả:
           </label>
           <textarea
@@ -247,7 +247,7 @@ export default function AddShop() {
             placeholder='Mô tả cửa hàng'
             value={formData.shopDescription}
             onChange={handleChange}
-            className='border p-2 rounded w-full'
+            className='border p-2 rounded w-full border-[#b2927b]/30 bg-[#e8dfd7]'
           />
         </div>
 

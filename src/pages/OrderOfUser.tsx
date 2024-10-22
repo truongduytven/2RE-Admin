@@ -104,7 +104,7 @@ export default function OrderOfUser() {
   }
 
   return (
-    <div className='w-full flex flex-col gap-10 my-10'>
+    <div className='w-full flex flex-col gap-10 my-10 text-primary'>
       <div className='w-full flex justify-center'>
         <div className='flex flex-col justify-center items-center'>
           <div className='text-4xl mb-5'>Danh sách đơn hàng</div>
@@ -114,31 +114,31 @@ export default function OrderOfUser() {
       <div className='w-full flex justify-center'>
         <div className='flex gap-4'>
           <button
-            className={`px-4 py-2 ${activeTab === 'all' ? 'font-bold border-b-2 border-black' : ''}`}
+            className={`px-4 py-2 ${activeTab === 'all' ? 'font-bold border-b-2 border-primary' : ''}`}
             onClick={() => setActiveTab('all')}
           >
             Tất cả
           </button>
           <button
-            className={`px-4 py-2 ${activeTab === 'pending' ? 'font-bold border-b-2 border-black' : ''}`}
+            className={`px-4 py-2 ${activeTab === 'pending' ? 'font-bold border-b-2 border-primary' : ''}`}
             onClick={() => setActiveTab('pending')}
           >
             Chưa thanh toán
           </button>
           <button
-            className={`px-4 py-2 ${activeTab === 'shipping' ? 'font-bold border-b-2 border-black' : ''}`}
+            className={`px-4 py-2 ${activeTab === 'shipping' ? 'font-bold border-b-2 border-primary' : ''}`}
             onClick={() => setActiveTab('shipping')}
           >
             Đang vận chuyển
           </button>
           <button
-            className={`px-4 py-2 ${activeTab === 'completed' ? 'font-bold border-b-2 border-black' : ''}`}
+            className={`px-4 py-2 ${activeTab === 'completed' ? 'font-bold border-b-2 border-primary' : ''}`}
             onClick={() => setActiveTab('completed')}
           >
             Đã hoàn thành
           </button>
           <button
-            className={`px-4 py-2 ${activeTab === 'canceled' ? 'font-bold border-b-2 border-black' : ''}`}
+            className={`px-4 py-2 ${activeTab === 'canceled' ? 'font-bold border-b-2 border-primary' : ''}`}
             onClick={() => setActiveTab('canceled')}
           >
             Đã hủy
@@ -163,11 +163,11 @@ export default function OrderOfUser() {
                         Xem chi tiết <Eye className='ml-2' size={20} />
                       </div>
                     </SheetTrigger>
-                    <SheetContent>
+                    <SheetContent className='text-primary'>
                       <SheetHeader>
-                        <SheetTitle>Chi tiết đơn hàng</SheetTitle>
+                        <SheetTitle className='text-primary'>Chi tiết đơn hàng</SheetTitle>
                         <SheetDescription>
-                          <div className='flex flex-col mt-10 gap-2'>
+                          <div className='flex flex-col mt-10 gap-2 text-primary'>
                             <div className='text-lg'>
                               <span className='font-bold'>Tên:</span> {order.fullName}
                             </div>
@@ -183,8 +183,8 @@ export default function OrderOfUser() {
                             <div className='text-lg'>
                               <span className='font-bold'>Ngày:</span> {formatDate(order.dateTime)}
                             </div>
-                            <div className='text-lg'>
-                              <span className='font-bold'>Tổng tiền:</span> {formatCurrency(order.totalPrice)}
+                            <div className='text-lg text-red-500'>
+                              <span className='font-bold text-primary'>Tổng tiền:</span> {formatCurrency(order.totalPrice)}
                             </div>
                             <div className='text-lg mb-4'>
                               <span className='font-bold'>Sản phẩm:</span>

@@ -197,7 +197,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
   return (
     <form onSubmit={handleSubmit} className='space-y-4'>
       <div>
-        <label className='block'>Ảnh sản phẩm:</label>
+        <label className='block text-primary'>Ảnh sản phẩm:</label>
 
         <div className='flex gap-2 mt-2'>
           {formData.oldImgUrl.map((img, index) => (
@@ -238,7 +238,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
         )}
       </div>
       <div>
-        <label htmlFor='name' className='block'>
+        <label htmlFor='name' className='block text-primary'>
           Tên sản phẩm:
         </label>
         <Input
@@ -254,7 +254,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
 
       <div className='flex w-full justify-between gap-5'>
         <div className='flex-1'>
-          <label htmlFor='price' className='block'>
+          <label htmlFor='price' className='block text-primary'>
             Giá:
           </label>
           <Input
@@ -269,7 +269,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
           />
         </div>
         <div className='flex-1'>
-          <label htmlFor='sale' className='block'>
+          <label htmlFor='sale' className='block text-primary'>
             Giảm giá:
           </label>
           <Input
@@ -284,7 +284,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
           />
         </div>
         <div className='flex-1'>
-          <label htmlFor='size' className='block'>
+          <label htmlFor='size' className='block text-primary'>
             Kích thước:
           </label>
           <Select
@@ -293,7 +293,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
             value={formData.sizeId}
             onValueChange={(value) => handleSelectChange('sizeId', value)}
           >
-            <SelectTrigger>
+            <SelectTrigger className='border-[#b2927b]/30 bg-[#e8dfd7]'>
               <SelectValue placeholder='' />
             </SelectTrigger>
             <SelectContent>
@@ -309,7 +309,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
 
       <div className='flex w-full justify-between gap-5'>
         <div className='flex-1'>
-          <label htmlFor='genderCategory' className='block'>
+          <label htmlFor='genderCategory' className='block text-primary'>
             Giới tính:
           </label>
           <Select
@@ -318,7 +318,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
             value={formData.genderCategoryId}
             onValueChange={(value) => handleSelectChange('genderCategoryId', value)}
           >
-            <SelectTrigger>
+            <SelectTrigger className='border-[#b2927b]/30 bg-[#e8dfd7]'>
               <SelectValue placeholder='' />
             </SelectTrigger>
             <SelectContent>
@@ -332,7 +332,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
         </div>
 
         <div className='flex-1'>
-          <label htmlFor='sale' className='block'>
+          <label htmlFor='sale' className='block text-primary'>
             Tình trạng:
           </label>
           <Input
@@ -348,7 +348,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
         </div>
 
         <div className='flex-1'>
-          <label htmlFor='categoryId' className='block'>
+          <label htmlFor='categoryId' className='block text-primary'>
             Danh mục:
           </label>
           <Select
@@ -357,7 +357,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
             value={formData.categoryId}
             onValueChange={(value) => handleSelectChange('categoryId', value)}
           >
-            <SelectTrigger>
+            <SelectTrigger className='border-[#b2927b]/30 bg-[#e8dfd7]'>
               <SelectValue placeholder='' />
             </SelectTrigger>
             <SelectContent>
@@ -372,7 +372,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
       </div>
 
       <div>
-        <label htmlFor='brand' className='block'>
+        <label htmlFor='brand' className='block text-primary'>
           Thương hiệu:
         </label>
         <Select
@@ -381,7 +381,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
           value={formData.brand}
           onValueChange={(value) => handleSelectChange('brand', value)}
         >
-          <SelectTrigger>
+          <SelectTrigger className='border-[#b2927b]/30 bg-[#e8dfd7]'>
             <SelectValue placeholder='' />
           </SelectTrigger>
           <SelectContent>
@@ -395,7 +395,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
       </div>
 
       <div>
-        <label htmlFor='description' className='block'>
+        <label htmlFor='description' className='block text-primary'>
           Mô tả:
         </label>
         <textarea
@@ -404,7 +404,7 @@ export default function UpdateProductForm({ product, setEdit, edit }: UpdateProd
           name='description'
           value={formData.description}
           onChange={handleChange}
-          className='border p-2 rounded w-full bg-white'
+          className='border p-2 rounded w-full border-[#b2927b]/30 bg-[#e8dfd7] disabled:cursor-not-allowed disabled:opacity-50'
         />
       </div>
 
