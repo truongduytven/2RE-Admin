@@ -161,9 +161,9 @@ export default function AddProduct() {
 
   return (
     <div>
-      <div className='flex justify-between items-center mb-6'>
+      <div className='flex justify-between text-primary items-center mb-6'>
         <div className='flex gap-2'>
-          <div className='text-3xl font-bold'>Thêm mới sản phẩm</div>
+          <div className='text-3xl font-bold text-primary'>Thêm mới sản phẩm</div>
         </div>
 
         <div className='flex gap-2'>
@@ -175,7 +175,7 @@ export default function AddProduct() {
       </div>
       <form onSubmit={handleSubmit} className='space-y-4'>
         <div>
-          <label className='block'>Ảnh sản phẩm:</label>
+          <label className='block text-primary'>Ảnh sản phẩm:</label>
 
           <div className='flex gap-2 mt-2'>
             {formData.oldImgUrl.map((img, index) => (
@@ -210,7 +210,7 @@ export default function AddProduct() {
           </div>
         </div>
         <div>
-          <label htmlFor='name' className='block'>
+          <label htmlFor='name' className='block text-primary'>
             Tên sản phẩm:
           </label>
           <Input
@@ -226,7 +226,7 @@ export default function AddProduct() {
 
         <div className='flex w-full justify-between gap-5'>
           <div className='flex-1'>
-            <label htmlFor='price' className='block'>
+            <label htmlFor='price' className='block text-primary'>
               Giá sau giảm:
             </label>
             <Input
@@ -240,7 +240,7 @@ export default function AddProduct() {
             />
           </div>
           <div className='flex-1'>
-            <label htmlFor='sale' className='block'>
+            <label htmlFor='sale' className='block text-primary'>
               Giá trước giảm:
             </label>
             <Input
@@ -254,7 +254,7 @@ export default function AddProduct() {
             />
           </div>
           <div className='flex-1'>
-            <label htmlFor='size' className='block'>
+            <label htmlFor='size' className='block text-primary'>
               Kích thước:
             </label>
             <Select
@@ -279,7 +279,7 @@ export default function AddProduct() {
 
         <div className='flex w-full justify-between gap-5'>
           <div className='flex-1'>
-            <label htmlFor='genderCategory' className='block'>
+            <label htmlFor='genderCategory' className='block text-primary'>
               Giới tính:
             </label>
             <Select
@@ -301,7 +301,7 @@ export default function AddProduct() {
           </div>
 
           <div className='flex-1'>
-            <label htmlFor='sale' className='block'>
+            <label htmlFor='sale' className='block text-primary'>
               Tình trạng:
             </label>
             <Input
@@ -316,7 +316,7 @@ export default function AddProduct() {
           </div>
 
           <div className='flex-1'>
-            <label htmlFor='categoryId' className='block'>
+            <label htmlFor='categoryId' className='block text-primary'>
               Danh mục:
             </label>
             <Select
@@ -339,7 +339,7 @@ export default function AddProduct() {
         </div>
 
         <div>
-          <label htmlFor='brand' className='block'>
+          <label htmlFor='brand' className='block text-primary'>
             Thương hiệu:
           </label>
           <Select name='brand' value={formData.brand} onValueChange={(value) => handleSelectChange('brand', value)}>
@@ -357,7 +357,7 @@ export default function AddProduct() {
         </div>
 
         <div>
-          <label htmlFor='description' className='block'>
+          <label htmlFor='description' className='block text-primary'>
             Mô tả:
           </label>
           <textarea
@@ -365,7 +365,7 @@ export default function AddProduct() {
             name='description'
             value={formData.description}
             onChange={handleChange}
-            className='border p-2 rounded w-full'
+            className='border p-2 rounded w-full bg-teriary'
           />
         </div>
 

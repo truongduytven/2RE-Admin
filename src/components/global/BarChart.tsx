@@ -88,18 +88,18 @@ export default function BarChartManager({ data }: BarChartProps) {
           dataKey={"month"}
           tickLine={false}
           axisLine={false}
-          stroke="#888888"
+          stroke="#b59584"
           fontSize={12}
         />
         <YAxis
           tickLine={false}
           axisLine={false}
-          stroke="#88888"
+          stroke="#b59584"
           fontSize={12}
           tickFormatter={(value) => formatPrice(value * 0.1)}
         />
         <Tooltip content={<CustomTooltip />}/>
-        <Bar dataKey={"revenue"} radius={[4, 4, 0, 0]}/>
+        <Bar fill="#b59584" dataKey={"revenue"} radius={[4, 4, 0, 0]}/>
       </BarGraph>
     </ResponsiveContainer>
   );

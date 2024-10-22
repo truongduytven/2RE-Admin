@@ -14,10 +14,10 @@ export default function Card(props: CardProps) {
     <CardContent className='bg-white'>
       <section className='flex justify-between gap-2'>
         <p className='text-sm font-bold text-primary'>{props.label}</p>
-        <props.icon className='h-6 w-6 text-gray-400' />
+        <props.icon className='h-6 w-6 text-primary/100' />
       </section>
       <section className='flex items-center gap-5'>
-        <h2 className='text-2xl font-semibold'>{props.amount}</h2>
+        <h2 className='text-2xl font-semibold text-primary'>{props.amount}</h2>
         <p className='text-xs text-gray-500'>{props.discription}</p>
       </section>
     </CardContent>

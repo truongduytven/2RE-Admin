@@ -95,9 +95,9 @@ export default function DataViewDetail({ row }: DataTableRowActionsProps<Order>)
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Chi tiết đơn hàng</SheetTitle>
+          <SheetTitle className='text-primary'>Chi tiết đơn hàng</SheetTitle>
           <SheetDescription>
-            <div className='flex flex-col mt-10 gap-2'>
+            <div className='flex flex-col mt-10 gap-2 text-primary'>
               <div className='text-lg'>
                 <span className='font-bold'>Tên:</span> {row.getValue('nameUser')}
               </div>
@@ -124,8 +124,8 @@ export default function DataViewDetail({ row }: DataTableRowActionsProps<Order>)
                   </SelectContent>
                 </Select>
               </div>
-              <div className='text-lg'>
-                <span className='font-bold'>Tổng tiền:</span> {formatCurrency(row.getValue('totalPrice'))}
+              <div className='text-lg text-red-500'>
+                <span className='font-bold text-primary'>Tổng tiền:</span> {formatCurrency(row.getValue('totalPrice'))}
               </div>
               <div className='text-lg'>
                 <span className='font-bold'>Phương thức thanh toán:</span>{row.getValue('paymentMethod')}

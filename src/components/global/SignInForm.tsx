@@ -45,7 +45,7 @@ function SignInForm() {
 
   return (
     <main>
-      <div className='container relative grid flex-col items-center justify-center min-h-screen lg:max-w-none lg:grid-cols-2 lg:px-0'>
+      <div className='bg-teriary container relative grid flex-col items-center justify-center min-h-screen lg:max-w-none lg:grid-cols-2 lg:px-0'>
         <div className='relative flex-col hidden h-full p-10 text-white bg-muted dark:border-r lg:flex'>
           <div
             style={{
@@ -56,11 +56,11 @@ function SignInForm() {
         </div>
         <div className='py-4 lg:p-8'>
           
-          <div className='py-4 lg:p-8'>
+          <div className='py-4 lg:p-8 text-primary'>
             <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
               <div className='flex flex-col space-y-2 text-center'>
                 <h1 className='text-2xl font-semibold tracking-tight'>Đăng nhập</h1>
-                <p className='text-sm text-muted-foreground'>
+                <p className='text-sm'>
                   để tiếp tục với <img className='inline w-5 h-5 mb-1' alt='icon' src={Icon} /> 2RE Secondhand
                 </p>
               </div>

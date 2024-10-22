@@ -114,7 +114,7 @@ export default function Transaction() {
   if (loading) {
     return <Loading />
   }
-  return <div className='w-full h-full flex justify-center'>
+  return <div className='w-full h-full flex justify-center text-primary'>
     <div className='relative w-full max-w-7xl flex flex-col gap-y-10 items-center'>
         <div className='text-4xl font-bold'>
             Tổng kết giao dịch
