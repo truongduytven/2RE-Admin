@@ -99,13 +99,13 @@ export default function AddProduct() {
     }
   }
 
-  const handleRemoveOldImage = (index: number) => {
-    const updatedImages = formData.oldImgUrl.filter((_, i) => i !== index)
-    setFormData({
-      ...formData,
-      oldImgUrl: updatedImages
-    })
-  }
+  // const handleRemoveOldImage = (index: number) => {
+  //   const updatedImages = formData.oldImgUrl.filter((_, i) => i !== index)
+  //   setFormData({
+  //     ...formData,
+  //     oldImgUrl: updatedImages
+  //   })
+  // }
 
   const handleRemoveNewImage = (index: number) => {
     const updatedNewImages = formData.newImgUrl.filter((_, i) => i !== index)
@@ -177,7 +177,7 @@ export default function AddProduct() {
         <div>
           <label className='block text-primary'>Ảnh sản phẩm:</label>
 
-          <div className='flex gap-2 mt-2'>
+          {/* <div className='flex gap-2 mt-2'>
             {formData.oldImgUrl.map((img, index) => (
               <div key={index} className='relative'>
                 <img src={img} alt={`Old Image ${index}`} className='w-28 h-28 object-cover' />
@@ -189,7 +189,7 @@ export default function AddProduct() {
                 </button>
               </div>
             ))}
-          </div>
+          </div> */}
 
           <div className='flex gap-2 mt-3'>
             {formData.newImgUrl.map((file, index) => (
