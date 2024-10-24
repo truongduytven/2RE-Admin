@@ -44,7 +44,7 @@ export default function ProductUpdate() {
         </div>
 
         <div className='flex gap-2'>
-          {(!edit && product?.status !== 'Hết hàng') && (
+          {(!edit && product?.status.toLowerCase() !== 'hết hàng') && (
             <Button
               onClick={() => {
                 setEdit(true)
