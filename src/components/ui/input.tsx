@@ -8,7 +8,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type, unit, ...props }, ref) => {
   return (
-    <div className='relative rounded-md'>
+    <div className='relative rounded-md flex-1'>
       <input
         type={type}
         className={cn(

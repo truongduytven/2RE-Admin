@@ -3,7 +3,7 @@
 import PageTitle from '@/components/global/PageTitle'
 // import Image from "next/image";
 import Card, { CardContent } from '@/components/global/Card'
-import { Bus, Ticket, Route, HandCoins } from 'lucide-react'
+import { Bus, Ticket, Route, HandCoins, Coins, FileStack, Package, Star } from 'lucide-react'
 import { useAuth } from '@/auth/AuthContext'
 import Loading from '@/components/Loading/Loading'
 import { formatPrice } from '@/lib/utils'
@@ -42,28 +42,28 @@ export default function DashboardManager() {
           key={1}
           amount={data ? formatPrice(data.revenueThisMonth) : '0'}
           discription=''
-          icon={Ticket}
+          icon={Coins}
           label='Doanh thu tháng này'
         />
         <Card
           key={2}
           amount={data ? data.totalOrders.toString() : '0'}
           discription=''
-          icon={Route}
+          icon={FileStack}
           label='Tổng số đơn hàng'
         />
         <Card
           key={3}
           amount={data ? data.totalProducts.toString() : '0'}
           discription=''
-          icon={Bus}
+          icon={Package}
           label='Tổng số sản phẩm'
         />
         <Card
           key={4}
           amount={data ? data.totalRatings.toString() : '0'}
           discription=''
-          icon={HandCoins}
+          icon={Star}
           label='Số lượt đánh giá'
         />
       </section>

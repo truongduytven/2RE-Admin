@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils'
 import { ArrowLeft, X } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/auth/AuthContext'
+import { Switch } from '@/components/ui/switch'
 
 interface Size {
   sizeId: string
@@ -51,6 +52,7 @@ export default function AddProduct() {
   const [sizes, setSizes] = useState<Size[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isCustomBrand, setIsCustomBrand] = useState(false)
   const { user } = useAuth()
   const navigate = useNavigate()
   useEffect(() => {
@@ -338,7 +340,7 @@ export default function AddProduct() {
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <label htmlFor='brand' className='block text-primary'>
             Thương hiệu:
           </label>
@@ -354,7 +356,39 @@ export default function AddProduct() {
               ))}
             </SelectContent>
           </Select>
+        </div> */}
+
+        <div className='flex items-center gap-3'>
+          <label className='block text-primary'>Thương hiệu:</label>
+          <span>{'Chọn từ danh sách'}</span>
+          <Switch checked={isCustomBrand} onCheckedChange={setIsCustomBrand} />
+          <span>{'Nhập thương hiệu mới'}</span>
         </div>
+
+        {isCustomBrand ? (
+          <Input
+            type='text'
+            id='brand'
+            name='brand'
+            placeholder='Nhập thương hiệu mới'
+            value={formData.brand}
+            onChange={handleChange}
+            className='border p-2 rounded w-full'
+          />
+        ) : (
+          <Select name='brand' value={formData.brand} onValueChange={(value) => handleSelectChange('brand', value)}>
+            <SelectTrigger className='border-[#b2927b]/30 bg-[#e8dfd7]'>
+              <SelectValue placeholder='Chọn thương hiệu có sẵn tại cửa hàng' />
+            </SelectTrigger>
+            <SelectContent>
+              {brands.map((brand) => (
+                <SelectItem key={brand} value={brand}>
+                  {brand}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
 
         <div>
           <label htmlFor='description' className='block text-primary'>

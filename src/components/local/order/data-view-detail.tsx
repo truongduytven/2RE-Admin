@@ -107,7 +107,7 @@ export default function DataViewDetail({ row }: DataTableRowActionsProps<Order>)
               </div>
               <div className='text-lg flex items-center gap-5'>
                 <span className='font-bold'>Trạng thái:</span>
-                <Select disabled={user?.RoleName !== 'User'} onValueChange={(value) => setNewStatus(value)} defaultValue={row.getValue('status')}>
+                <Select disabled={user?.roleName !== 'User'} onValueChange={(value) => setNewStatus(value)} defaultValue={row.getValue('status')}>
                   <SelectTrigger className='w-[180px]'>
                     <SelectValue placeholder='Theme' />
                   </SelectTrigger>
@@ -128,7 +128,7 @@ export default function DataViewDetail({ row }: DataTableRowActionsProps<Order>)
                 <span className='font-bold text-primary'>Tổng tiền:</span> {formatCurrency(row.getValue('totalPrice'))}
               </div>
               <div className='text-lg'>
-                <span className='font-bold'>Phương thức thanh toán:</span>{row.getValue('paymentMethod')}
+                <span className='font-bold'>Phương thức thanh toán: </span>{row.getValue('paymentMethod')}
               </div>
               <div className='text-lg'>
                 <span className='font-bold'>Ngày đặt: </span>{format(new Date(row.getValue('date') ? row.getValue('date') : new Date()), 'dd/MM/yyyy')}

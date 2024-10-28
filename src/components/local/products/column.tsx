@@ -39,7 +39,7 @@ export const columns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: 'imgUrl',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='ảnh sản phẩm' />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Ảnh sản phẩm' />,
     cell: ({ row }) => {
       return (
         <div className='flex justify-center items-center'>
@@ -64,7 +64,7 @@ export const columns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: 'genderCategory',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Giới' />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Giới tính' />,
     cell: ({ row }) => {
       return <div className='mx-5'>{row.getValue('genderCategory')}</div>
     }
@@ -78,7 +78,7 @@ export const columns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: 'category',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Ngày tạo' />,
+    header: ({ column }) => <DataTableColumnHeader column={column} title='Loại' />,
     cell: ({ row }) => {
       return <div className='mx-5'>{row.getValue('category')}</div>
     }
